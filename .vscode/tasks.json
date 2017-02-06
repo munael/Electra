@@ -1,0 +1,53 @@
+{
+    "version": "0.1.5",
+    "windows": {
+        "command": "J:/SW/gcc/bin/gcc.exe",
+        "isShellCommand": true,
+        "showOutput": "always",
+        "args": [
+            "-std=gnu11",
+            "-g",
+            // "-fconcepts",
+            "-I", "J:/SW/gcc/include/c++/7.0.0",
+            "-L", "J:/SW/gcc/lib",
+            "main.c",
+            "-o", "main.exe"
+            // "&&", "main.exe"
+        ]
+    },
+    "__2windows": {
+        "command": "J:/SW/LLVM/bin/clang.exe",
+        // "command": "J:/SW/LLVM/msbuild-bin/cl.exe",
+        "isShellCommand": true,
+        "args": [
+            "-std=c++1z",
+            "-O0",
+            "-gdwarf",
+            "-c", "main.cpp",
+            "-o", "main.obj",
+            "&&", "J:/SW/LLVM/bin/lld-link.exe", "-debug", "main.obj"
+        ],
+        "showOutput": "always"
+    },
+    "__windows": {
+        // "command": "g++",
+        // FIXME!
+        // "command": "cl",
+        "command": "D:/A2/SW/Microsoft Visual Studio/2017/VC/Tools/MSVC/14.10.24629/bin/HostX64/x64/cl.exe",
+        "isShellCommand": true,
+        // "args": ["-g", "main.cpp"],
+        "args": [
+            "/I\"D:\\A2\\SW\\Microsoft Visual Studio\\2017\\VC\\Tools\\MSVC\\14.10.24629\\include\"",
+            "/Zi", "/EHsc",
+            "main.cpp"
+        ],
+        "showOutput": "always"
+    },
+    "linux": {
+        "command": "g++",
+        "isShellCommand": true,
+        // "args": ["-g", "main.cpp"],
+        "args": ["-g", "main.cpp"],
+        "showOutput": "always"
+    }
+}
